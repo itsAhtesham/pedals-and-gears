@@ -25,7 +25,7 @@ export const STORE_INFO = {
     lat: 28.5397633,
     lng: 77.3680267,
   },
-  googleMapsUrl: "https://www.google.com/maps/place/Pedals+and+Gears+-+Hero+%26+Firefox+Cycles/@28.5397633,77.3680267,17z",
+  googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=28.5397633,77.3680267",
   services: ["In-store Shopping", "In-store Pick-up", "Delivery"],
 } as const;
 
