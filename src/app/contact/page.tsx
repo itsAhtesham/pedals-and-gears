@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useI18n } from "@/i18n/context";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { STORE_INFO } from "@/lib/constants";
@@ -18,6 +18,11 @@ export default function ContactPage() {
   const { t, locale } = useI18n();
   const [submitted, setSubmitted] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMapLoaded(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
