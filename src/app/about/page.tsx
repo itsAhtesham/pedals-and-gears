@@ -1,8 +1,6 @@
 "use client";
 
-import { I18nProvider, useI18n } from "@/i18n/context";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { useI18n } from "@/i18n/context";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { STORE_INFO } from "@/lib/constants";
 import {
@@ -16,15 +14,13 @@ import {
   MapPin,
 } from "lucide-react";
 
-function AboutContent() {
+export default function AboutPage() {
   const { t } = useI18n();
 
   return (
     <>
-      <Header />
-      <main>
-        {/* Hero */}
-        <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
+      {/* Hero */}
+      <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-1/3 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
             <div className="absolute bottom-0 right-0 w-72 h-72 bg-secondary/10 rounded-full blur-[100px]" />
@@ -161,16 +157,6 @@ function AboutContent() {
             </AnimatedSection>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
-  );
-}
-
-export default function AboutPage() {
-  return (
-    <I18nProvider>
-      <AboutContent />
-    </I18nProvider>
   );
 }

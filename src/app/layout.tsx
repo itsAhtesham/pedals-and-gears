@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import AppShell from "@/components/layout/AppShell";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -46,7 +47,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${montserrat.variable} ${inter.variable}`}>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <AppShell>{children}</AppShell>
+      </body>
     </html>
   );
 }

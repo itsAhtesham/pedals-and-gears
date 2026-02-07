@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { I18nProvider, useI18n } from "@/i18n/context";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { useI18n } from "@/i18n/context";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { STORE_INFO } from "@/lib/constants";
 import {
@@ -16,7 +14,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-function ContactContent() {
+export default function ContactPage() {
   const { t, locale } = useI18n();
   const [submitted, setSubmitted] = useState(false);
 
@@ -28,10 +26,8 @@ function ContactContent() {
 
   return (
     <>
-      <Header />
-      <main>
-        {/* Hero */}
-        <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
+      {/* Hero */}
+      <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-1/3 -right-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
           </div>
@@ -244,16 +240,6 @@ function ContactContent() {
             title="Pedals & Gears Store Location"
           />
         </section>
-      </main>
-      <Footer />
     </>
-  );
-}
-
-export default function ContactPage() {
-  return (
-    <I18nProvider>
-      <ContactContent />
-    </I18nProvider>
   );
 }

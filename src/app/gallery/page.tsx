@@ -1,8 +1,6 @@
 "use client";
 
-import { I18nProvider, useI18n } from "@/i18n/context";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { useI18n } from "@/i18n/context";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { IMAGES } from "@/lib/images";
 import Image from "next/image";
@@ -18,15 +16,13 @@ const galleryItems = [
   { title: "Gear Cycles Lineup", titleHi: "गियर साइकिल लाइनअप", image: IMAGES.gallery.gearCloseup, span: "md:col-span-2", tall: false },
 ];
 
-function GalleryContent() {
+export default function GalleryPage() {
   const { t, locale } = useI18n();
 
   return (
     <>
-      <Header />
-      <main>
-        {/* Hero */}
-        <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
+      {/* Hero */}
+      <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px]" />
           </div>
@@ -86,16 +82,6 @@ function GalleryContent() {
             </AnimatedSection>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
-  );
-}
-
-export default function GalleryPage() {
-  return (
-    <I18nProvider>
-      <GalleryContent />
-    </I18nProvider>
   );
 }

@@ -1,8 +1,6 @@
 "use client";
 
-import { I18nProvider, useI18n } from "@/i18n/context";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { useI18n } from "@/i18n/context";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { STORE_INFO } from "@/lib/constants";
 import {
@@ -24,15 +22,13 @@ const services = [
   { nameKey: "services.warranty.name", descKey: "services.warranty.description", icon: ShieldCheck, gradient: "from-yellow-500 to-amber-600" },
 ] as const;
 
-function ServicesContent() {
+export default function ServicesPage() {
   const { t } = useI18n();
 
   return (
     <>
-      <Header />
-      <main>
-        {/* Hero */}
-        <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
+      {/* Hero */}
+      <section className="bg-dark pt-32 pb-20 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
           </div>
@@ -99,16 +95,6 @@ function ServicesContent() {
             </AnimatedSection>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
-  );
-}
-
-export default function ServicesPage() {
-  return (
-    <I18nProvider>
-      <ServicesContent />
-    </I18nProvider>
   );
 }
