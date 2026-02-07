@@ -43,4 +43,4 @@ Open [http://localhost:3000](http://localhost:3000).
 - `src/app/` — Routes and layouts (home, about, products, services, gallery, contact)
 - `src/components/` — UI: layout (Header, Footer, AppShell), home sections, shared UI
 - `src/i18n/` — Translation context and EN/HI strings
-- `src/lib/` — Constants (store info, nav), image config
+- `src/lib/` — Constants (store info, nav), image config.
