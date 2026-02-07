@@ -17,6 +17,7 @@ import {
 export default function ContactPage() {
   const { t, locale } = useI18n();
   const [submitted, setSubmitted] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -228,7 +229,12 @@ export default function ContactPage() {
         </section>
 
         {/* Map */}
-        <section className="h-[400px] w-full">
+        <section className="h-[400px] w-full relative">
+          {!mapLoaded && (
+            <div className="absolute inset-0 bg-light-dim animate-pulse flex items-center justify-center">
+              <MapPin size={32} className="text-dark-muted" />
+            </div>
+          )}
           <iframe
             src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.7!2d${STORE_INFO.coordinates.lng}!3d${STORE_INFO.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce7686c1ce76b%3A0x4b61bdbcc61a8bea!2sPedals%20and%20Gears%20-%20Hero%20%26%20Firefox%20Cycles!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin`}
             width="100%"
@@ -238,6 +244,7 @@ export default function ContactPage() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Pedals & Gears Store Location"
+            onLoad={() => setMapLoaded(true)}
           />
         </section>
     </>

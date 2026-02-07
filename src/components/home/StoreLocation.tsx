@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useI18n } from "@/i18n/context";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -8,6 +9,7 @@ import { STORE_INFO } from "@/lib/constants";
 
 export default function StoreLocation() {
   const { t, locale } = useI18n();
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -20,16 +22,21 @@ export default function StoreLocation() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Map */}
           <AnimatedSection direction="left">
-            <div className="rounded-2xl overflow-hidden shadow-xl border border-light-dim h-[400px] lg:h-full min-h-[400px]">
+            <div className="rounded-2xl overflow-hidden shadow-xl border border-light-dim h-[400px] lg:h-full min-h-[400px] relative">
+              {!mapLoaded && (
+                <div className="absolute inset-0 bg-light-dim animate-pulse flex items-center justify-center">
+                  <MapPin size={32} className="text-dark-muted" />
+                </div>
+              )}
               <iframe
                 src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.7!2d${STORE_INFO.coordinates.lng}!3d${STORE_INFO.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce7686c1ce76b%3A0x4b61bdbcc61a8bea!2sPedals%20and%20Gears%20-%20Hero%20%26%20Firefox%20Cycles!5e0!3m2!1sen!2sin!4v1706000000000!5m2!1sen!2sin`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
-                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Pedals & Gears Store Location"
+                onLoad={() => setMapLoaded(true)}
               />
             </div>
           </AnimatedSection>
