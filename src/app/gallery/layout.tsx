@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     description:
       "Our bikes, workshop and store in Sector 104, Noida.",
     url: "https://pedalsandgears.in/gallery",
+    siteName: "Pedals & Gears",
+    locale: "en_IN",
+    type: "website",
   },
 };
 

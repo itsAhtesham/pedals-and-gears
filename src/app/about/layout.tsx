@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     description:
       "Your trusted bicycle shop in Sector 104, Noida. Authorized Hero & Firefox dealer.",
     url: "https://pedalsandgears.in/about",
+    siteName: "Pedals & Gears",
+    locale: "en_IN",
+    type: "website",
   },
 };
 

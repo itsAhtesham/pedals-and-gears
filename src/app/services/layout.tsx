@@ -9,6 +9,53 @@ export const metadata: Metadata = {
     description:
       "Cycle sales, repair, delivery and more in Sector 104, Noida.",
     url: "https://pedalsandgears.in/services",
+    siteName: "Pedals & Gears",
+    locale: "en_IN",
+    type: "website",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  provider: {
+    "@type": "BikeStore",
+    name: "Pedals & Gears",
+    url: "https://pedalsandgears.in",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Noida",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Bicycle Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Bike Sales" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Repair & Service" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Accessories" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Customization" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Home Delivery" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Warranty Support" },
+      },
+    ],
   },
 };
 
@@ -17,5 +64,13 @@ export default function ServicesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }
